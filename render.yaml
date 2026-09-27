@@ -1,0 +1,40 @@
+# render.yaml — Render.com deployment configuration for RAKSHA backend
+# Docs: https://render.com/docs/render-yaml-spec
+
+services:
+  - type: web
+    name: raksha-server
+    runtime: node
+    region: oregon          # or: frankfurt, singapore, ohio
+    plan: free              # upgrade to starter ($7/mo) for always-on
+
+    # Root directory of the server within the monorepo
+    rootDir: server
+
+    # Install deps, compile TypeScript → dist/
+    buildCommand: npm install && npm run build
+
+    # Run the compiled output
+    startCommand: npm run start
+
+    # Environment variables — set SECRET values in the Render dashboard, not here
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000         # Render assigns this automatically; keep in sync
+
+      # ── Set these in Render dashboard → Environment tab ──────────────────
+      # - key: MONGODB_URI
+      #   value: mongodb+srv://...   ← your MongoDB Atlas URI
+      #
+      # - key: JWT_SECRET
+      #   value: your_strong_secret_here
+      #
+      # - key: ORS_API_KEY
+      #   value: your_openrouteservice_key  (optional – fallback routing works without it)
+      #
+      # - key: CLIENT_URL
+      #   value: https://your-project.vercel.app
+
+    healthCheckPath: /api/health

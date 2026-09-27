@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  color-scheme: dark;
+}
+
+/* Custom dark tactical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #070a10;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2b45;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Background tactical grid */
+.bg-tactical-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-tactical-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism tactical panels */
+.glass-panel {
+  background: rgba(13, 19, 31, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-alert {
+  background: rgba(26, 12, 16, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Radar pulse animation */
+@keyframes pingRadar {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.radar-ping {
+  animation: pingRadar 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Custom Leaflet Dark Mode styling */
+.leaflet-container {
+  background-color: #070a10 !important;
+  font-family: inherit;
+  z-index: 10;
+}
+
+.leaflet-tile {
+  transition: filter 0.3s ease;
+}
+
+/* Tactical Dark Filter for OpenStreetMap */
+.tactical-dark-tiles {
+  filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(110%);
+}
+
+/* Custom dark popup for Leaflet */
+.leaflet-popup-content-wrapper {
+  background: rgba(13, 19, 31, 0.95) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #1f2b45 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.leaflet-popup-tip {
+  background: #0d131f !important;
+  border: 1px solid #1f2b45 !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Leaflet controls dark */
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background-color: #0d131f !important;
+  color: #94a3b8 !important;
+  border-color: #1f2b45 !important;
+}
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background-color: #1c263d !important;
+  color: #f8fafc !important;
+}
+
+/* Text glow */
+.text-glow-red {
+  text-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+}
+.text-glow-amber {
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+}
